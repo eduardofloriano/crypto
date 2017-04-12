@@ -2,7 +2,7 @@ package br.com.crypto;
 
 public class Codificador {
 	
-	private char[] palavraChave = new char[9];
+	private char[] palavraChave;
 	
 	public Codificador(String palavra){
 		
@@ -15,7 +15,7 @@ public class Codificador {
 		System.out.println("Palavra recebida: " + palavraRandom);
 		
 		char[] palavraRandomArray = palavraRandom.toCharArray();
-		char[] palavraCodificada =  new char[9];
+		char[] palavraCodificada =  new char[palavraRandomArray.length];
 		
 		
 		for(int i = 0; i < palavraRandomArray.length; i++){

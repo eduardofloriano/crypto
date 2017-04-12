@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,10 +23,12 @@ public class Decodificador {
 
 	private List<String> letrasUsadas = new ArrayList<String>();
 	private List<Character> letrasInexistentes = new ArrayList<Character>();
-	private List<String> letrasTrocadas = new ArrayList<String>();
+//	private List<String> letrasTrocadas = new ArrayList<String>();
 	//private char[] letrasCorretas = new char[9];
 	private Map<Integer, Character> letrasCorretas = new HashMap<Integer, Character>();
+	private Map<Integer, Character> letrasTrocadas = new HashMap<Integer, Character>();
 	
+	private List<String> todasLetras = new ArrayList<String>();
 
 	private char[] palavraDecodificada = new char[9];
 	
@@ -50,7 +54,18 @@ public class Decodificador {
 //			e.printStackTrace();
 //		}
 		
-		
+		//PREENCHE A LISTA COM TODAS AS LETRAS
+		for(int i = 1; i<=61; i++){
+			String letra = null;
+			if (i > 9) {
+				letra = getLetraFromPattern(i);
+			} else {
+				letra = Integer.toString(i);
+			}
+			todasLetras.add(letra);
+		}
+		//EMBARALHA A LISTA
+		Collections.shuffle(todasLetras);
 	}
 
 	public void decodificar(String original, String codificada) {
@@ -61,12 +76,11 @@ public class Decodificador {
 		for (int i = 0; i < codificadaList.length; i++) {
 			//System.out.println("Char: " + codificadaList[i]);
 
-			if (codificadaList[i] == POSICAO_CERTA) palavraDecodificada[i] = codificadaList[i];  //letrasCorretas.put(i, codificadaList[i]);
-			if (codificadaList[i] == POSICAO_ERRADA); letrasTrocadas.add(Character.toString(codificadaList[i])) ;
-			if (codificadaList[i] == NAO_EXISTE) letrasInexistentes.add(codificadaList[i])  ;
+			if (codificadaList[i] == POSICAO_CERTA) palavraDecodificada[i] = originalList[i];  //letrasCorretas.put(i, codificadaList[i]);
+			if (codificadaList[i] == POSICAO_ERRADA) letrasTrocadas.put(i, originalList[i]) ;
+//			if (codificadaList[i] == NAO_EXISTE) letrasInexistentes.add(codificadaList[i])  ;
 
 		}
-		
 		
 	}
 	
@@ -81,6 +95,38 @@ public class Decodificador {
 			}
 		}
 		
+		List<Integer> letrasTrocadasRemove = new ArrayList<Integer>();
+		
+		//AS LETRAS COM POSICAO ERRADA ANDAM NA FILA
+		for (Map.Entry<Integer, Character> entry : letrasTrocadas.entrySet()){
+			
+			//PROXIMA POSICAO
+			Integer proximaPosicao = entry.getKey() + 1;
+			
+			//SE A PROXIMA POSICAO FOR >= QUE A ULTIMA, VOLTA PRO COMECO
+			if( proximaPosicao >= novaPalavra.length ){
+				proximaPosicao = 0;
+			}
+			
+			//SE A PROXIMA POSICAO ESTIVER PREENCHIDA, MUDA PARA PROXIMA
+			while(novaPalavra[proximaPosicao] != '\u0000'){
+				proximaPosicao ++;
+				if( proximaPosicao > novaPalavra.length ){
+					proximaPosicao = 0;
+				}
+			}
+
+			//PREENCHE A NOVA PALAVRA
+			novaPalavra[proximaPosicao] = entry.getValue();
+			
+			//REMOVE DA LISTA DAS PALAVRAS TROCADAS
+			letrasTrocadasRemove.add(entry.getKey());
+		}
+		
+		//REMOVE DA LISTA DAS LETRAS TROCADAS
+		for(Integer i : letrasTrocadasRemove){
+			letrasTrocadas.remove(i);
+		}
 		
 		//PREENCHE A NOVA PALAVRA
 		for(int i = 0; i < novaPalavra.length; i++){
@@ -103,21 +149,24 @@ public class Decodificador {
 //		}
 		
 		String letra = null;
-		int randomNum = ThreadLocalRandom.current().nextInt(1, 61 + 1);
-		if (randomNum > 9) {
-			letra = getLetraFromPattern(randomNum);
-		} else {
-			letra = Integer.toString(randomNum);
-		}
+//		int randomNum = ThreadLocalRandom.current().nextInt(1, 61 + 1);
+//		if (randomNum > 9) {
+//			letra = getLetraFromPattern(randomNum);
+//		} else {
+//			letra = Integer.toString(randomNum);
+//		}
 		
-		if(letrasInexistentes.contains(letra)){
-			return getLetra();
-		}		
-		if(letrasUsadas.contains(letra)){
-			return getLetra();
-		}
+		letra = todasLetras.remove(0);
+				
+//		if(letrasInexistentes.contains(letra)){
+//			return getLetra();
+//		}	
 		
-		letrasUsadas.add(letra);
+//		if(letrasUsadas.contains(letra)){
+//			return getLetra();
+//		}
+//		letrasUsadas.add(letra);
+		
 		return letra.charAt(0);
 		
 	}

@@ -37,22 +37,63 @@ public class ConsultarDesafio {
 		palavraNova = decodificador.getNovaPalavra();
 		palavraCodificada = codificador.processar(palavraNova);
 		decodificador.decodificar(palavraNova, palavraCodificada);
-		System.out.println("Palavra codificada: " + palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
 		
 		palavraNova = decodificador.getNovaPalavra();
 		palavraCodificada = codificador.processar(palavraNova);
 		decodificador.decodificar(palavraNova, palavraCodificada);
-		System.out.println("Palavra codificada: " + palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
 		
 		palavraNova = decodificador.getNovaPalavra();
 		palavraCodificada = codificador.processar(palavraNova);
 		decodificador.decodificar(palavraNova, palavraCodificada);
-		System.out.println("Palavra codificada: " + palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
 		
 		palavraNova = decodificador.getNovaPalavra();
 		palavraCodificada = codificador.processar(palavraNova);
 		decodificador.decodificar(palavraNova, palavraCodificada);
-		System.out.println("Palavra codificada: " + palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
+
+		palavraNova = decodificador.getNovaPalavra();
+		palavraCodificada = codificador.processar(palavraNova);
+		decodificador.decodificar(palavraNova, palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
+		
+		palavraNova = decodificador.getNovaPalavra();
+		palavraCodificada = codificador.processar(palavraNova);
+		decodificador.decodificar(palavraNova, palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
+		
+		
+		palavraNova = decodificador.getNovaPalavra();
+		palavraCodificada = codificador.processar(palavraNova);
+		decodificador.decodificar(palavraNova, palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
+		
+		palavraNova = decodificador.getNovaPalavra();
+		palavraCodificada = codificador.processar(palavraNova);
+		decodificador.decodificar(palavraNova, palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
+		
+		palavraNova = decodificador.getNovaPalavra();
+		palavraCodificada = codificador.processar(palavraNova);
+		decodificador.decodificar(palavraNova, palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
+		
+		palavraNova = decodificador.getNovaPalavra();
+		palavraCodificada = codificador.processar(palavraNova);
+		decodificador.decodificar(palavraNova, palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
+		
+		palavraNova = decodificador.getNovaPalavra();
+		palavraCodificada = codificador.processar(palavraNova);
+		decodificador.decodificar(palavraNova, palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
+		
+		palavraNova = decodificador.getNovaPalavra();
+		palavraCodificada = codificador.processar(palavraNova);
+		decodificador.decodificar(palavraNova, palavraCodificada);
+		System.out.println("Palavra codificada: " + palavraCodificada + "\n");
 		
 		
 		System.out.println("Palavra codificada: " + codificador.processar( novaChave ));
