@@ -23,10 +23,11 @@ Mensagem
 
 Observações
 
-200OKString decodificada
-206Partial ContentRequest está correto, a string ainda não foi decifrada, olhar resposta do serviço para maiores informações
-400Bad RequestAlgum parâmetro pode estar faltando na chamada do endpoint. O parâmetro coder deve ser maior que 10 caracteres.
-409ConflictO tamanho da string challenge enviada é diferente da esperada.
+200 OK  String decodificada
+206 Partial Content Request está correto, a string ainda não foi decifrada, olhar resposta do serviço para maiores informações
+400 Bad Request Algum parâmetro pode estar faltando na chamada do endpoint. O parâmetro coder deve ser maior que 10 caracteres.
+409 Conflict  O tamanho da string challenge enviada é diferente da esperada.
+
 Ao enviar o request corretamente, o serviço irá retornar uma outra string com o mesmo tamanho da string do desafio contendo um criptograma que pode ser lido conforme regra abaixo:
 • Uma letra "W" indica que o caracter enviado naquela posição não está presente na string.
 • Uma letra "U" indica que o caracter enviado naquela posição está presente na string mas está na posição errada.
